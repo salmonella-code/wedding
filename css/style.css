@@ -1,0 +1,109 @@
+/* ====================================================================
+   LOMBOK SASAK WEDDING THEME STYLES
+   Inspired by Subahnale Songket Weaving, Lumbung, and Earthy Lombok Tones
+   ==================================================================== */
+
+:root {
+    --sasak-terracotta: #8E3E2C;
+    --sasak-gold: #C89B3C;
+    --sasak-darkgold: #9E7420;
+    --sasak-cream: #FBF8F3;
+    --sasak-sand: #F4EDE1;
+    --sasak-charcoal: #2A2421;
+}
+
+/* Background Motif - Tenun Subahnale Geometric Weave (Subtle SVG Pattern) */
+.sasak-motif-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C89B3C' fill-opacity='0.15' fill-rule='evenodd'%3E%3Cpath d='M30 0l30 30-30 30L0 30 30 0zm0 10L10 30l20 20 20-20L30 10zm0 8l12 12-12 12-12-12 12-12z'/%3E%3Ccircle cx='30' cy='30' r='3' fill='%238E3E2C' fill-opacity='0.25'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+}
+
+/* Top Decorative Tenun Divider */
+.tenun-divider-top {
+    height: 12px;
+    width: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L40 12 L0 12 Z' fill='%23C89B3C' fill-opacity='0.4'/%3E%3Cpath d='M20 4 L32 12 L8 12 Z' fill='%238E3E2C' fill-opacity='0.7'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+/* Bottom Decorative Tenun Divider */
+.tenun-divider-bottom {
+    height: 12px;
+    width: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 12 L40 0 L0 0 Z' fill='%23C89B3C' fill-opacity='0.4'/%3E%3Cpath d='M20 8 L32 0 L8 0 Z' fill='%238E3E2C' fill-opacity='0.7'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+/* Sasak Box Corner Ornaments */
+.sasak-box-decor {
+    position: relative;
+}
+
+.sasak-box-decor::before,
+.sasak-box-decor::after {
+    content: "❖";
+    position: absolute;
+    color: var(--sasak-gold);
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.sasak-box-decor::before {
+    top: 10px;
+    left: 12px;
+}
+
+.sasak-box-decor::after {
+    bottom: 10px;
+    right: 12px;
+}
+
+/* Slow Spin Animation for Music Player */
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+}
+
+/* Custom Scrollbar for Wishlist / Feed */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1ebd9;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c89b3c;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #8e3e2c;
+}
+
+/* Pulse Glow Effect */
+@keyframes subtle-glow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(200, 155, 60, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(200, 155, 60, 0.5);
+    }
+}
+
+.glow-subtle {
+    animation: subtle-glow 3s infinite;
+}
+

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Arya & Sekar - Lombok Sasak Edition</title>
+    <meta name="description" content="Undangan Pernikahan Arya & Sekar - Nuansa Keanggunan Sasak Lombok">
+    <meta property="og:title" content="The Wedding of Arya & Sekar">
+    <meta property="og:description" content="Kami mengundang Anda untuk merayakan hari bahagia pernikahan kami.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sasak-terracotta': '#8E3E2C',
+                        'sasak-gold': '#C89B3C',
+                        'sasak-darkgold': '#9E7420',
+                        'sasak-cream': '#FBF8F3',
+                        'sasak-sand': '#F4EDE1',
+                        'sasak-charcoal': '#2A2421',
+                        'sasak-sage': '#5B6E58',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-sasak-cream text-sasak-charcoal font-sans antialiased overflow-x-hidden selection:bg-sasak-gold/20 selection:text-sasak-terracotta">
+
+    <!-- Background Ambient Sound (Royalty Free Romantic Acoustic Instrument) -->
+    <audio id="wedding-audio" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-moment-1144.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Floating Audio Control Button -->
+    <div id="audio-control" class="fixed bottom-24 right-5 z-40 hidden">
+        <button id="toggle-audio-btn" aria-label="Toggle Audio" class="w-12 h-12 rounded-full bg-sasak-terracotta text-sasak-gold shadow-xl flex items-center justify-center border-2 border-sasak-gold/50 transition-all hover:scale-110 active:scale-95 group">
+            <i id="audio-icon" class="fas fa-compact-disc text-xl animate-spin-slow"></i>
+        </button>
+    </div>
+
+    <!-- Floating Bottom Navigation Bar (Visible after opening) -->
+    <nav id="bottom-nav" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-white/85 backdrop-blur-md px-4 py-2 rounded-full shadow-2xl border border-sasak-gold/30 hidden transition-all duration-500">
+        <ul class="flex items-center space-x-4 sm:space-x-6 text-xs text-sasak-charcoal/70">
+            <li>
+                <a href="#hero" class="flex flex-col items-center hover:text-sasak-terracotta transition-colors py-1">
+                    <i class="fas fa-home text-base mb-0.5"></i>
+                    <span class="text-[10px]">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#couple" class="flex flex-col items-center hover:text-sasak-terracotta transition-colors py-1">
+                    <i class="fas fa-heart text-base mb-0.5"></i>
+                    <span class="text-[10px]">Mempelai</span>
+                </a>
+            </li>
+            <li>
+                <a href="#event" class="flex flex-col items-center hover:text-sasak-terracotta transition-colors py-1">
+                    <i class="fas fa-calendar-alt text-base mb-0.5"></i>
+                    <span class="text-[10px]">Acara</span>
+                </a>
+            </li>
+            <li>
+                <a href="#gallery" class="flex flex-col items-center hover:text-sasak-terracotta transition-colors py-1">
+                    <i class="fas fa-images text-base mb-0.5"></i>
+                    <span class="text-[10px]">Galeri</span>
+                </a>
+            </li>
+            <li>
+                <a href="#rsvp" class="flex flex-col items-center hover:text-sasak-terracotta transition-colors py-1">
+                    <i class="fas fa-comment-dots text-base mb-0.5"></i>
+                    <span class="text-[10px]">Doa</span>
+                </a>
+            </li>
+            <li>
+                <a href="#gift" class="flex flex-col items-center hover:text-sasak-terracotta transition-colors py-1">
+                    <i class="fas fa-gift text-base mb-0.5"></i>
+                    <span class="text-[10px]">Kado</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ==================== COVER OVERLAY (MODAL PEMBUKA) ==================== -->
+    <div id="cover-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-sasak-charcoal/95 backdrop-blur-md transition-opacity duration-1000">
+        <!-- Background Decorative Motif -->
+        <div class="absolute inset-0 sasak-motif-bg opacity-15 pointer-events-none"></div>
+
+        <div class="relative z-10 w-full max-w-lg mx-4 text-center p-8 sm:p-10 rounded-3xl bg-sasak-cream/95 shadow-2xl border-2 border-sasak-gold/40 sasak-box-decor overflow-hidden">
+            <!-- Tenun Border Ornament Top -->
+            <div class="tenun-divider-top mb-6"></div>
+
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sasak-terracotta/10 border border-sasak-terracotta/20 mb-4">
+                <span class="w-1.5 h-1.5 rounded-full bg-sasak-gold"></span>
+                <span class="text-xs uppercase tracking-widest text-sasak-terracotta font-medium font-cinzel">Walimatul 'Ursy</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-sasak-gold"></span>
+            </div>
+
+            <!-- Couple Monogram / Lumbung Icon -->
+            <div class="mx-auto w-20 h-20 mb-4 flex items-center justify-center rounded-full bg-gradient-to-tr from-sasak-terracotta via-sasak-darkgold to-sasak-gold p-[2px] shadow-lg">
+                <div class="w-full h-full bg-sasak-cream rounded-full flex items-center justify-center">
+                    <svg class="w-10 h-10 text-sasak-terracotta" viewBox="0 0 100 100" fill="currentColor">
+                        <!-- Bale Lumbung Sasak Traditional Roof Silhouette Icon -->
+                        <path d="M50 15 C35 25, 20 28, 10 40 C30 42, 45 35, 50 30 C55 35, 70 42, 90 40 C80 28, 65 25, 50 15 Z" />
+                        <path d="M25 43 L25 80 L75 80 L75 43 C65 47, 50 44, 50 44 C50 44, 35 47, 25 43 Z" fill-opacity="0.2"/>
+                        <path d="M30 46 L30 78 L70 78 L70 46" stroke="currentColor" stroke-width="3" fill="none" />
+                        <line x1="38" y1="48" x2="38" y2="78" stroke="currentColor" stroke-width="2" />
+                        <line x1="62" y1="48" x2="62" y2="78" stroke="currentColor" stroke-width="2" />
+                        <circle cx="50" cy="62" r="5" fill="currentColor"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h1 class="font-script text-4xl sm:text-5xl text-sasak-terracotta mb-1">Arya &amp; Sekar</h1>
+            <p class="font-cinzel text-xs tracking-[0.25em] text-sasak-gold uppercase mb-6">Pernikahan Sasak Modern</p>
+
+            <!-- Dynamic Audience Box -->
+            <div class="my-6 p-4 rounded-xl bg-sasak-sand/70 border border-sasak-gold/30">
+                <p class="text-xs text-sasak-charcoal/70 uppercase tracking-wider mb-1">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+                <h2 id="guest-name-cover" class="text-xl sm:text-2xl font-bold font-serif text-sasak-terracotta tracking-wide">
+                    Tamu Undangan
+                </h2>
+                <p id="guest-custom-note" class="text-[11px] text-sasak-charcoal/60 mt-1 italic">
+                    Di Tempat
+                </p>
+            </div>
+
+            <p class="text-xs text-sasak-charcoal/80 mb-6 leading-relaxed max-w-xs mx-auto">
+                Tanpa mengurangi rasa hormat, kami bermaksud mengundang Anda untuk hadir dan memberikan doa restu pada pernikahan kami.
+            </p>
+
+            <button id="open-invitation-btn" class="inline-flex items-center space-x-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-sasak-terracotta to-sasak-darkgold text-white font-medium text-sm tracking-wide shadow-lg shadow-sasak-terracotta/30 hover:scale-105 active:scale-95 transition-all">
+                <i class="fas fa-envelope-open-text text-sasak-gold"></i>
+                <span>Buka Undangan</span>
+            </button>
+
+            <!-- Tenun Border Ornament Bottom -->
+            <div class="tenun-divider-bottom mt-6"></div>
+        </div>
+    </div>
+
+
+    <!-- ==================== MAIN INVITATION CONTENT ==================== -->
+    <main class="relative z-10 w-full">
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center text-center px-4 py-20 overflow-hidden">
+            <!-- Background Image with Soft Parallax & Overlay -->
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');">
+                <div class="absolute inset-0 bg-gradient-to-b from-sasak-cream/95 via-sasak-cream/80 to-sasak-cream"></div>
+                <div class="absolute inset-0 sasak-motif-bg opacity-10"></div>
+            </div>
+
+            <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+                <!-- Songket Subahnale Badge -->
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sasak-sand border border-sasak-gold/40 shadow-sm animate-fade-in">
+                    <span class="text-sasak-gold text-xs">◆</span>
+                    <span class="text-xs uppercase tracking-widest text-sasak-charcoal font-cinzel">The Wedding of</span>
+                    <span class="text-sasak-gold text-xs">◆</span>
+                </div>
+
+                <h1 class="font-script text-6xl sm:text-8xl text-sasak-terracotta drop-shadow-sm">
+                    Arya &amp; Sekar
+                </h1>
+
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="h-[1px] w-12 sm:w-20 bg-sasak-gold/50"></div>
+                    <p class="font-cinzel text-sm sm:text-base tracking-[0.3em] uppercase text-sasak-charcoal font-medium">
+                        Minggu, 18 Oktober 2026
+                    </p>
+                    <div class="h-[1px] w-12 sm:w-20 bg-sasak-gold/50"></div>
+                </div>
+
+                <!-- Sasak Lombok Cultural Subtitle -->
+                <p class="text-xs sm:text-sm text-sasak-charcoal/70 italic max-w-md mx-auto">
+                    "Solah gawe, pade marang, rempug patut" <br>
+                    <span class="not-italic text-[11px] text-sasak-gold font-serif">— Niat luhur menyatukan dua hati dalam adat &amp; berkah Ilahi —</span>
+                </p>
+
+                <!-- Dedicated Welcome Guest Callout in Hero -->
+                <div class="max-w-md mx-auto p-4 rounded-2xl bg-white/70 backdrop-blur-sm border border-sasak-gold/30 shadow-md">
+                    <p class="text-[11px] uppercase tracking-wider text-sasak-charcoal/60 mb-0.5">Spesial Mengundang:</p>
+                    <p id="guest-name-hero" class="text-xl font-bold font-serif text-sasak-terracotta">
+                        Tamu Undangan
+                    </p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="pt-6">
+                    <p class="text-xs uppercase tracking-widest text-sasak-gold font-cinzel mb-4">Menghitung Hari Bahagia</p>
+                    <div id="countdown" class="grid grid-cols-4 gap-2 sm:gap-4 max-w-sm sm:max-w-md mx-auto">
+                        <div class="bg-white/80 backdrop-blur-sm p-3 rounded-2xl border border-sasak-gold/30 shadow-sm">
+                            <span id="days" class="block text-2xl sm:text-3xl font-bold font-cinzel text-sasak-terracotta">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase text-sasak-charcoal/60">Hari</span>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur-sm p-3 rounded-2xl border border-sasak-gold/30 shadow-sm">
+                            <span id="hours" class="block text-2xl sm:text-3xl font-bold font-cinzel text-sasak-terracotta">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase text-sasak-charcoal/60">Jam</span>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur-sm p-3 rounded-2xl border border-sasak-gold/30 shadow-sm">
+                            <span id="minutes" class="block text-2xl sm:text-3xl font-bold font-cinzel text-sasak-terracotta">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase text-sasak-charcoal/60">Menit</span>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur-sm p-3 rounded-2xl border border-sasak-gold/30 shadow-sm">
+                            <span id="seconds" class="block text-2xl sm:text-3xl font-bold font-cinzel text-sasak-terracotta">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase text-sasak-charcoal/60">Detik</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <a href="#couple" class="inline-block animate-bounce text-sasak-gold hover:text-sasak-terracotta transition-colors">
+                        <i class="fas fa-chevron-down text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== AYAT SUCI & FILOSOFI SASAK ==================== -->
+        <section class="py-16 px-4 bg-sasak-sand/40 relative">
+            <div class="max-w-2xl mx-auto text-center space-y-4">
+                <div class="w-12 h-12 mx-auto rounded-full bg-sasak-gold/15 flex items-center justify-center text-sasak-gold">
+                    <i class="fas fa-dove text-lg"></i>
+                </div>
+                
+                <h3 class="font-cinzel text-base tracking-widest text-sasak-terracotta uppercase">Surah Ar-Rum : 21</h3>
+                
+                <p class="font-serif italic text-base sm:text-lg text-sasak-charcoal/85 leading-relaxed px-4">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang..."
+                </p>
+
+                <!-- Tenun Subahnale Motif Accent Line -->
+                <div class="flex items-center justify-center space-x-2 pt-2">
+                    <span class="h-0.5 w-12 bg-sasak-gold/40"></span>
+                    <span class="text-xs font-cinzel text-sasak-gold">❖ SUBHANALE ❖</span>
+                    <span class="h-0.5 w-12 bg-sasak-gold/40"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== MEMPELAI (THE COUPLE) ==================== -->
+        <section id="couple" class="py-20 px-4 max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] text-sasak-gold font-cinzel block mb-2">Kedua Mempelai</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-sasak-terracotta">Sang Mempelai</h2>
+                <div class="w-16 h-0.5 bg-sasak-gold mx-auto mt-3"></div>
+                <p class="text-xs sm:text-sm text-sasak-charcoal/70 mt-3 max-w-lg mx-auto">
+                    Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud melangsungkan akad pernikahan putra-putri kami:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 items-center">
+                <!-- Mempelai Pria -->
+                <div class="text-center group">
+                    <div class="relative mx-auto w-56 h-72 sm:w-64 sm:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white mb-6">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Arya Danuarta" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sasak-charcoal/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white text-xs">
+                            <span class="bg-sasak-terracotta/80 px-2.5 py-0.5 rounded-full text-[10px] tracking-widest uppercase">Mempelai Pria</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-serif text-2xl font-bold text-sasak-terracotta">Arya Danuarta, S.T.</h3>
+                    <p class="text-xs text-sasak-charcoal/70 mt-1">
+                        Putra pertama dari <br>
+                        <span class="font-semibold text-sasak-charcoal">Bpk. H. Lalu Danu Wire</span> &amp; <span class="font-semibold text-sasak-charcoal">Ibu Hj. Baiq Nurhasanah</span>
+                    </p>
+                    <p class="text-xs text-sasak-gold/90 italic mt-1 font-serif">Keluarga Besar Ampenan, Lombok Barat</p>
+                    
+                    <div class="mt-4 flex justify-center space-x-3 text-sasak-gold">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-sasak-gold/40 flex items-center justify-center hover:bg-sasak-gold hover:text-white transition-all">
+                            <i class="fab fa-instagram text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mempelai Wanita -->
+                <div class="text-center group">
+                    <div class="relative mx-auto w-56 h-72 sm:w-64 sm:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white mb-6">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Sekar Kinanthi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sasak-charcoal/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 left-3 right-3 text-white text-xs">
+                            <span class="bg-sasak-terracotta/80 px-2.5 py-0.5 rounded-full text-[10px] tracking-widest uppercase">Mempelai Wanita</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-serif text-2xl font-bold text-sasak-terracotta">Sekar Kinanthi, S.Ked.</h3>
+                    <p class="text-xs text-sasak-charcoal/70 mt-1">
+                        Putri bungsu dari <br>
+                        <span class="font-semibold text-sasak-charcoal">Bpk. Raden Suryonegoro</span> &amp; <span class="font-semibold text-sasak-charcoal">Ibu Dra. Rr. Ratna Dewi</span>
+                    </p>
+                    <p class="text-xs text-sasak-gold/90 italic mt-1 font-serif">Keluarga Besar Mataram, Nusa Tenggara Barat</p>
+
+                    <div class="mt-4 flex justify-center space-x-3 text-sasak-gold">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-sasak-gold/40 flex items-center justify-center hover:bg-sasak-gold hover:text-white transition-all">
+                            <i class="fab fa-instagram text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SENTUHAN LOMBOK & BUDAYA SASAK ==================== -->
+        <section class="py-16 px-4 bg-gradient-to-b from-sasak-cream via-sasak-sand to-sasak-cream relative border-y border-sasak-gold/20">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <span class="text-xs uppercase tracking-widest text-sasak-gold font-cinzel">Kearifan Lokal</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-sasak-terracotta mt-1">Nuansa Budaya Sasak &amp; Wisata Lombok</h2>
+                    <p class="text-xs text-sasak-charcoal/70 mt-2 max-w-lg mx-auto">
+                        Pernikahan kami diiringi keindahan tradisi tenun Sade, tenun Sukarara, serta pesona elok bumi Seribu Masjid.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <!-- Feature 1: Kain Tenun Subahnale -->
+                    <div class="p-5 rounded-2xl bg-white/90 shadow-sm border border-sasak-gold/30 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 rounded-full bg-sasak-terracotta/10 text-sasak-terracotta mx-auto flex items-center justify-center mb-3">
+                            <i class="fas fa-layer-group text-lg"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-sasak-charcoal text-base">Tenun Ikat &amp; Songket</h4>
+                        <p class="text-xs text-sasak-charcoal/70 mt-2 leading-relaxed">
+                            Menenun benang kehidupan dengan motif Subahnale dari Desa Sukarara yang melambangkan kesucian, kesabaran, dan rasa syukur.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2: Tradisi Nyongkolan -->
+                    <div class="p-5 rounded-2xl bg-white/90 shadow-sm border border-sasak-gold/30 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 rounded-full bg-sasak-gold/20 text-sasak-darkgold mx-auto flex items-center justify-center mb-3">
+                            <i class="fas fa-drum text-lg"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-sasak-charcoal text-base">Iringan Gendang Beleq</h4>
+                        <p class="text-xs text-sasak-charcoal/70 mt-2 leading-relaxed">
+                            Kemegahan alat musik tabuh khas Sasak yang mengiringi langkah kedua mempelai memperkenalkan diri ke sanak famili dan warga.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3: Pesona Rinjani & Pantai Mandalika -->
+                    <div class="p-5 rounded-2xl bg-white/90 shadow-sm border border-sasak-gold/30 text-center hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 rounded-full bg-sasak-sage/20 text-sasak-sage mx-auto flex items-center justify-center mb-3">
+                            <i class="fas fa-mountain-sun text-lg"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-sasak-charcoal text-base">Kemegahan Lombok</h4>
+                        <p class="text-xs text-sasak-charcoal/70 mt-2 leading-relaxed">
+                            Terinspirasi kokohnya Gunung Rinjani serta kedamaian hembusan angin pantai pasir merica Tanjung Aan &amp; Mandalika.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== RANGKAIAN ACARA (EVENT) ==================== -->
+        <section id="event" class="py-20 px-4 max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] text-sasak-gold font-cinzel block mb-2">Jadwal &amp; Lokasi</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-sasak-terracotta">Rangkaian Acara</h2>
+                <div class="w-16 h-0.5 bg-sasak-gold mx-auto mt-3"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card Akad Nikah -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl border-t-4 border-sasak-gold relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
+                        <i class="fas fa-ring text-9xl text-sasak-charcoal"></i>
+                    </div>
+
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-sasak-sand text-sasak-terracotta text-xs font-cinzel font-semibold mb-4">
+                            Akad Nikah
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-sasak-charcoal mb-2">Ijab &amp; Qobul</h3>
+                        <p class="text-xs text-sasak-charcoal/70 leading-relaxed mb-6">
+                            Momen sakral penyatuan janji suci di hadapan penghulu dan para saksi.
+                        </p>
+
+                        <div class="space-y-3 text-xs text-sasak-charcoal/80 mb-6">
+                            <div class="flex items-start space-x-3">
+                                <i class="far fa-calendar-check text-sasak-gold text-base mt-0.5"></i>
+                                <div>
+                                    <p class="font-semibold text-sasak-charcoal">Minggu, 18 Oktober 2026</p>
+                                    <p class="text-[11px] text-sasak-charcoal/60">Pukul 08.00 - 10.00 WITA</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-map-marker-alt text-sasak-gold text-base mt-0.5"></i>
+                                <div>
+                                    <p class="font-semibold text-sasak-charcoal">Masjid Hubbul Wathan (Islamic Center Lombok)</p>
+                                    <p class="text-[11px] text-sasak-charcoal/60">Jl. Udayana No.1, Mataram, Nusa Tenggara Barat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-sasak-sand flex flex-col sm:flex-row gap-2">
+                        <a href="https://maps.google.com/?q=Islamic+Center+NTB+Lombok" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-sasak-sand text-sasak-terracotta text-xs font-semibold hover:bg-sasak-gold hover:text-white transition-colors">
+                            <i class="fas fa-map-location-dot mr-1.5"></i> Buka Peta
+                        </a>
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+Nikah+Arya+%26+Sekar&dates=20261018T000000Z/20261018T020000Z&details=Akad+Nikah+Arya+dan+Sekar+di+Islamic+Center+Lombok&location=Masjid+Hubbul+Wathan+Lombok" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-sasak-terracotta text-white text-xs font-semibold hover:bg-sasak-darkgold transition-colors">
+                            <i class="far fa-calendar-plus mr-1.5"></i> Kalender
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Resepsi & Adat Nyongkolan -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl border-t-4 border-sasak-terracotta relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
+                        <i class="fas fa-champagne-glasses text-9xl text-sasak-charcoal"></i>
+                    </div>
+
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-sasak-terracotta/10 text-sasak-terracotta text-xs font-cinzel font-semibold mb-4">
+                            Resepsi Pernikahan
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-sasak-charcoal mb-2">Walimatul 'Ursy</h3>
+                        <p class="text-xs text-sasak-charcoal/70 leading-relaxed mb-6">
+                            Perayaan suka cita bersama keluarga besar, sahabat, serta iringan tari tradisional Sasak.
+                        </p>
+
+                        <div class="space-y-3 text-xs text-sasak-charcoal/80 mb-6">
+                            <div class="flex items-start space-x-3">
+                                <i class="far fa-calendar-check text-sasak-terracotta text-base mt-0.5"></i>
+                                <div>
+                                    <p class="font-semibold text-sasak-charcoal">Minggu, 18 Oktober 2026</p>
+                                    <p class="text-[11px] text-sasak-charcoal/60">Pukul 11.30 - 16.00 WITA</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-map-marker-alt text-sasak-terracotta text-base mt-0.5"></i>
+                                <div>
+                                    <p class="font-semibold text-sasak-charcoal">Grand Ballroom Senggigi Beach Resort</p>
+                                    <p class="text-[11px] text-sasak-charcoal/60">Jl. Raya Senggigi, Batu Layar, Lombok Barat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-sasak-sand flex flex-col sm:flex-row gap-2">
+                        <a href="https://maps.google.com/?q=Senggigi+Beach+Lombok" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-sasak-sand text-sasak-terracotta text-xs font-semibold hover:bg-sasak-gold hover:text-white transition-colors">
+                            <i class="fas fa-map-location-dot mr-1.5"></i> Buka Peta
+                        </a>
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Arya+%26+Sekar&dates=20261018T033000Z/20261018T080000Z&details=Resepsi+Pernikahan+Arya+dan+Sekar+di+Senggigi+Lombok&location=Grand+Ballroom+Senggigi" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-2.5 px-4 rounded-xl bg-sasak-terracotta text-white text-xs font-semibold hover:bg-sasak-darkgold transition-colors">
+                            <i class="far fa-calendar-plus mr-1.5"></i> Kalender
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== GALERI PREWEDDING & LOMBOK ==================== -->
+        <section id="gallery" class="py-20 px-4 bg-sasak-sand/30">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-xs uppercase tracking-[0.25em] text-sasak-gold font-cinzel block mb-2">Dokumentasi</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-sasak-terracotta">Galeri Momen Bahagia</h2>
+                    <div class="w-16 h-0.5 bg-sasak-gold mx-auto mt-3"></div>
+                    <p class="text-xs sm:text-sm text-sasak-charcoal/70 mt-3">
+                        Mengabadikan kisah kasih berlatar pesona eksotis bumi Sasak Lombok.
+                    </p>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-md cursor-pointer gallery-item" data-full="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Moment 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fas fa-search-plus text-xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-md cursor-pointer gallery-item" data-full="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Moment 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fas fa-search-plus text-xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-md cursor-pointer gallery-item" data-full="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=80">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80" alt="Moment 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fas fa-search-plus text-xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-md cursor-pointer gallery-item" data-full="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1200&q=80">
+                        <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=600&q=80" alt="Moment 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fas fa-search-plus text-xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-md cursor-pointer gallery-item" data-full="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Moment 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fas fa-search-plus text-xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-md cursor-pointer gallery-item" data-full="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1200&q=80">
+                        <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80" alt="Moment 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fas fa-search-plus text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal for Gallery -->
+        <div id="gallery-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4">
+            <button id="close-gallery-btn" class="absolute top-6 right-6 text-white text-3xl hover:text-sasak-gold transition-colors z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="modal-image" src="" alt="Full view" class="max-h-[85vh] max-w-[90vw] object-contain rounded-xl shadow-2xl border border-white/20">
+        </div>
+
+        <!-- ==================== DIGITAL WEDDING GIFT (KADO DIGITAL) ==================== -->
+        <section id="gift" class="py-20 px-4 max-w-3xl mx-auto text-center">
+            <span class="text-xs uppercase tracking-[0.25em] text-sasak-gold font-cinzel block mb-2">Tanda Kasih</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-sasak-terracotta">Amplop Digital</h2>
+            <div class="w-16 h-0.5 bg-sasak-gold mx-auto mt-3"></div>
+            <p class="text-xs sm:text-sm text-sasak-charcoal/70 mt-3 max-w-md mx-auto leading-relaxed">
+                Doa restu Anda adalah karunia terindah bagi kami. Namun jika Anda bermaksud memberikan kado kasih, Anda dapat mengirimkannya melalui:
+            </p>
+
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Rekening 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-sasak-gold/30 text-left relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-bold text-base text-blue-900 tracking-wider">BANK BCA</span>
+                        <i class="fas fa-credit-card text-sasak-gold text-lg"></i>
+                    </div>
+                    <p class="text-xs text-sasak-charcoal/60">Nomor Rekening</p>
+                    <p class="font-mono text-lg font-bold text-sasak-charcoal my-1 select-all" id="rek-bca">8735 9182 44</p>
+                    <p class="text-xs font-medium text-sasak-charcoal/80 mb-4">a.n. Arya Danuarta</p>
+                    <button onclick="copyToClipboard('8735918244', this)" class="w-full py-2 px-3 rounded-lg bg-sasak-sand text-sasak-terracotta text-xs font-semibold hover:bg-sasak-terracotta hover:text-white transition-all flex items-center justify-center space-x-2">
+                        <i class="far fa-copy"></i>
+                        <span>Salin No. Rekening</span>
+                    </button>
+                </div>
+
+                <!-- Rekening 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-sasak-gold/30 text-left relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="font-bold text-base text-teal-800 tracking-wider">BANK BSI</span>
+                        <i class="fas fa-credit-card text-sasak-gold text-lg"></i>
+                    </div>
+                    <p class="text-xs text-sasak-charcoal/60">Nomor Rekening</p>
+                    <p class="font-mono text-lg font-bold text-sasak-charcoal my-1 select-all" id="rek-bsi">7192 8401 12</p>
+                    <p class="text-xs font-medium text-sasak-charcoal/80 mb-4">a.n. Sekar Kinanthi</p>
+                    <button onclick="copyToClipboard('7192840112', this)" class="w-full py-2 px-3 rounded-lg bg-sasak-sand text-sasak-terracotta text-xs font-semibold hover:bg-sasak-terracotta hover:text-white transition-all flex items-center justify-center space-x-2">
+                        <i class="far fa-copy"></i>
+                        <span>Salin No. Rekening</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kirim Kado Fisik Address -->
+            <div class="mt-8 bg-sasak-sand/60 p-5 rounded-2xl border border-sasak-gold/30 text-left max-w-md mx-auto">
+                <div class="flex items-start space-x-3">
+                    <i class="fas fa-box text-sasak-terracotta text-lg mt-0.5"></i>
+                    <div>
+                        <p class="font-semibold text-xs text-sasak-charcoal">Kirim Kado Fisik:</p>
+                        <p class="text-xs text-sasak-charcoal/70 mt-1 leading-relaxed">
+                            Kediaman Mempelai Pria: Jl. Pejanggik No. 42, Cakranegara, Kota Mataram, NTB 83231 (Up: Arya / 0812-3456-7890)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== RSVP & BUKU TAMU / DOA ==================== -->
+        <section id="rsvp" class="py-20 px-4 bg-sasak-sand/40 border-t border-sasak-gold/20">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="text-xs uppercase tracking-[0.25em] text-sasak-gold font-cinzel block mb-2">Konfirmasi &amp; Doa</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-sasak-terracotta">Buku Tamu &amp; RSVP</h2>
+                    <div class="w-16 h-0.5 bg-sasak-gold mx-auto mt-3"></div>
+                    <p class="text-xs sm:text-sm text-sasak-charcoal/70 mt-3">
+                        Mohon konfirmasi kehadiran dan sampaikan doa tulus Anda untuk kami berdua.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-sasak-gold/30">
+                    <form id="rsvp-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-sasak-charcoal mb-1" for="guest-input-name">Nama Lengkap</label>
+                            <input type="text" id="guest-input-name" required placeholder="Contoh: Salman &amp; Ajeng" class="w-full px-4 py-3 rounded-xl border border-sasak-gold/40 focus:outline-none focus:ring-2 focus:ring-sasak-terracotta/40 text-xs text-sasak-charcoal">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-sasak-charcoal mb-1" for="guest-status">Konfirmasi Kehadiran</label>
+                                <select id="guest-status" class="w-full px-4 py-3 rounded-xl border border-sasak-gold/40 focus:outline-none focus:ring-2 focus:ring-sasak-terracotta/40 text-xs text-sasak-charcoal bg-white">
+                                    <option value="Hadir">Insya Allah Hadir</option>
+                                    <option value="Masih Ragu">Masih Ragu / Belum Pasti</option>
+                                    <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-sasak-charcoal mb-1" for="guest-count">Jumlah Hadir</label>
+                                <select id="guest-count" class="w-full px-4 py-3 rounded-xl border border-sasak-gold/40 focus:outline-none focus:ring-2 focus:ring-sasak-terracotta/40 text-xs text-sasak-charcoal bg-white">
+                                    <option value="1 Orang">1 Orang</option>
+                                    <option value="2 Orang">2 Orang</option>
+                                    <option value="3+ Orang">3+ Orang (Keluarga)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-sasak-charcoal mb-1" for="guest-message">Ucapan &amp; Doa Restu</label>
+                            <textarea id="guest-message" rows="3" required placeholder="Tuliskan ucapan selamat &amp; doa terbaik Anda..." class="w-full px-4 py-3 rounded-xl border border-sasak-gold/40 focus:outline-none focus:ring-2 focus:ring-sasak-terracotta/40 text-xs text-sasak-charcoal"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 px-6 rounded-full bg-gradient-to-r from-sasak-terracotta to-sasak-darkgold text-white font-medium text-xs tracking-wider uppercase shadow-md hover:scale-[1.01] active:scale-95 transition-all">
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Konfirmasi &amp; Doa
+                        </button>
+                    </form>
+
+                    <!-- Feed Ucapan Tamu -->
+                    <div class="mt-10 pt-8 border-t border-sasak-sand">
+                        <h4 class="font-serif font-bold text-lg text-sasak-charcoal mb-4 flex items-center justify-between">
+                            <span>Ucapan &amp; Doa Sahabat</span>
+                            <span id="wishes-count" class="text-xs bg-sasak-sand px-2.5 py-1 rounded-full text-sasak-terracotta font-sans font-semibold">3 Ucapan</span>
+                        </h4>
+
+                        <div id="wishes-list" class="space-y-3 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
+                            <!-- Injected dynamically via script.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TOOL HELPER / PEMBUAT LINK UNDANGAN ==================== -->
+        <section class="py-12 px-4 max-w-2xl mx-auto">
+            <div class="p-6 rounded-2xl bg-white border border-sasak-gold/40 shadow-sm text-center">
+                <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-sasak-sand text-sasak-terracotta text-[10px] font-cinzel font-semibold mb-2">
+                    <i class="fas fa-link"></i>
+                    <span>Generator Link Tamu</span>
+                </div>
+                <h3 class="font-serif font-bold text-lg text-sasak-charcoal">Buat Link Khusus untuk Tamu</h3>
+                <p class="text-xs text-sasak-charcoal/70 mt-1 mb-4">
+                    Masukkan nama tamu yang ingin Anda undang untuk membuat tautan WhatsApp yang langsung terisi otomatis:
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+                    <input type="text" id="target-guest-input" placeholder="Misal: Salman &amp; Ajeng" class="flex-1 px-4 py-2.5 rounded-xl border border-sasak-gold/40 text-xs focus:outline-none focus:ring-2 focus:ring-sasak-terracotta/40">
+                    <button id="generate-link-btn" class="px-5 py-2.5 rounded-xl bg-sasak-terracotta text-white text-xs font-semibold hover:bg-sasak-darkgold transition-colors flex items-center justify-center space-x-1.5">
+                        <i class="fas fa-magic"></i>
+                        <span>Generate Link</span>
+                    </button>
+                </div>
+
+                <div id="generated-link-box" class="mt-4 hidden p-3 rounded-xl bg-sasak-sand/60 border border-sasak-gold/30 text-left">
+                    <p class="text-[10px] uppercase tracking-wider text-sasak-charcoal/60 font-semibold mb-1">Link Undangan Siap Kirim:</p>
+                    <p id="generated-link-url" class="text-xs font-mono text-sasak-terracotta break-all select-all font-semibold"></p>
+                    <div class="mt-2 flex gap-2">
+                        <button id="copy-guest-link-btn" class="flex-1 py-1.5 px-3 rounded-lg bg-sasak-terracotta text-white text-xs font-semibold hover:bg-sasak-darkgold transition-all">
+                            <i class="far fa-copy mr-1"></i> Salin Link
+                        </button>
+                        <a id="share-wa-btn" href="#" target="_blank" class="flex-1 py-1.5 px-3 rounded-lg bg-emerald-700 text-white text-xs font-semibold text-center hover:bg-emerald-800 transition-all">
+                            <i class="fab fa-whatsapp mr-1"></i> Bagikan WA
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="py-12 px-4 bg-sasak-charcoal text-white text-center relative overflow-hidden">
+            <div class="absolute inset-0 sasak-motif-bg opacity-5 pointer-events-none"></div>
+            <div class="relative z-10 max-w-xl mx-auto space-y-4">
+                <h3 class="font-script text-4xl text-sasak-gold">Arya &amp; Sekar</h3>
+                <p class="text-xs text-white/70 tracking-widest font-cinzel">MATARAM - LOMBOK - NUSA TENGGARA BARAT</p>
+                <p class="text-[11px] text-white/50 max-w-md mx-auto leading-relaxed">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+                </p>
+                <div class="pt-4 text-[10px] text-white/30 border-t border-white/10">
+                    &copy; 2026 Arya &amp; Sekar Wedding. Crafted with Lombok Sasak Heritage.
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Toast Notification Element -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-sasak-charcoal text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-2xl border border-sasak-gold/40 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-2">
+        <i class="fas fa-check-circle text-sasak-gold"></i>
+        <span id="toast-message">Teks berhasil disalin!</span>
+    </div>
+
+    <!-- App JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
+

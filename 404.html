@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Mengarahkan ke Undangan...</title>
+    <script>
+        // GitHub Pages SPA router fallback
+        // If a user visits {base_url}/for=Salman&Ajeng, this redirects to {base_url}/?for=Salman&Ajeng
+        (function() {
+            var path = window.location.pathname;
+            var search = window.location.search;
+            var hash = window.location.hash;
+
+            // Check if the path contains 'for=' or parameters
+            if (path.indexOf('for=') !== -1 || path.indexOf('to=') !== -1) {
+                // Find where the repo/base path ends and where /for= starts
+                var parts = path.split(/(for=.*|to=.*)/i);
+                var basePath = parts[0];
+                var param = parts[1];
+
+                // Ensure trailing slash on base path if needed
+                if (!basePath.endsWith('/')) {
+                    basePath += '/';
+                }
+
+                // Redirect seamlessly
+                var target = basePath + '?' + param + (search ? '&' + search.slice(1) : '') + hash;
+                window.location.replace(target);
+            } else {
+                // Default fallback to root
+                window.location.replace('./');
+            }
+        })();
+    </script>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #FBF8F3; color: #8E3E2C;">
+    <p>Memuat undangan pernikahan Arya &amp; Sekar...</p>
+</body>
+</html>
+
