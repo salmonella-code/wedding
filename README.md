@@ -19,10 +19,12 @@ Website ini siap di-host langsung secara gratis di **GitHub Pages**.
      - Judul tab browser (*Meta Title*)
      - Form buku tamu (*RSVP*) terisi otomatis.
 2. **Sentuhan Budaya Sasak & Wisata Lombok**:
+   - **Section Khusus Gunung Rinjani**: Menggunakan panorama megah Gunung Rinjani (Sembalun 3.726 MDPL) berlatar awan dan kawah sebagai background dengan efek paralaks.
+   - **Section Jadwal & Lokasi Acara**: Menggunakan background otentik arsitektur **Rumah Adat Suku Sasak (*Bale Tani / Desa Sade Lombok*)** dengan perpaduan kartu kaca modern (*glassmorphism*).
    - Motif tenun songket Subahnale khas Sukarara.
    - Ikon arsitektur tradisional Lumbung Sasak.
    - Peribahasa Sasak: *"Solah gawe, pade marang, rempug patut"*.
-   - Cerita adat Nyongkolan, iringan Gendang Beleq, dan pesona pantai Mandalika & Rinjani.
+   - Cerita adat Nyongkolan, iringan Gendang Beleq, dan pesona pantai Mandalika & Senggigi.
 3. **Modal Pembuka Interaktif ("Buka Undangan")**:
    - Menghindari pemblokiran *Autoplay* audio oleh browser.
    - Efek taburan konfeti bernuansa warna terracotta, emas, dan sage.
