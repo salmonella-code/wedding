@@ -36,9 +36,10 @@ Website ini siap di-host langsung secara gratis di **GitHub Pages**.
    - Tombol langsung ke Google Maps & Google Calendar untuk Akad & Resepsi.
 7. **Amplop Digital (Kado Digital)**:
    - Salin nomor rekening bank (BCA, BSI) hanya dengan satu klik (dilengkapi notifikasi toast).
-8. **Buku Tamu & RSVP Interaktif**:
-   - Tamu dapat memberikan konfirmasi kehadiran & doa restu.
-   - Data tersimpan di browser (`localStorage`), sehingga doa langsung muncul di daftar ucapan.
+8. **Buku Tamu & RSVP Terintegrasi Google Spreadsheet**:
+   - Terhubung langsung ke Google Spreadsheet Anda: [Buka Spreadsheet](https://docs.google.com/spreadsheets/d/10AhTkXuDNHDtlffzi7BkIjj5SCIZnY08L7al8PAgudY/edit?usp=sharing).
+   - Data doa dari Google Spreadsheet otomatis ditarik dan ditampilkan di daftar ucapan secara *real-time*.
+   - Dilengkapi tombol sinkronisasi manual dan pencadangan lokal.
 9. **Generator Tautan Undangan & WhatsApp**:
    - Terdapat alat di bagian bawah web untuk mengetikkan nama tamu dan langsung membuat format pesan WhatsApp yang rapi dan siap kirim.
 
@@ -120,4 +121,26 @@ Semua konten dapat diedit dengan mudah:
    const targetDate = new Date('2026-12-10T08:00:00+08:00').getTime();
    ```
 5. **Musik Latar**: Ganti link `src` audio di tag `<audio id="wedding-audio">` pada [index.html](index.html) dengan URL file mp3 pilihan Anda.
+
+---
+
+## 📊 Cara Menghubungkan Form ke Google Spreadsheet
+
+Agar form RSVP di website dapat otomatis menulis data ke Google Spreadsheet Anda:
+
+1. Buka spreadsheet Anda: [https://docs.google.com/spreadsheets/d/10AhTkXuDNHDtlffzi7BkIjj5SCIZnY08L7al8PAgudY/edit](https://docs.google.com/spreadsheets/d/10AhTkXuDNHDtlffzi7BkIjj5SCIZnY08L7al8PAgudY/edit)
+2. Klik menu **Ekstensi** (*Extensions*) -> **Apps Script**.
+3. Buka file `google-apps-script.js` yang ada di folder proyek ini, lalu salin (*copy*) semua kodenya dan tempel (*paste*) ke editor Apps Script.
+4. Klik tombol **Simpan** (Ctrl + S).
+5. Klik tombol **Terapkan** (*Deploy*) di pojok kanan atas -> pilih **Penerapan Baru** (*New deployment*).
+6. Pada kolom jenis, pilih **Aplikasi Web** (*Web app*).
+7. Konfigurasi:
+   - **Jalankan sebagai**: *Saya* (*Me*)
+   - **Siapa yang memiliki akses**: *Siapa saja* (*Anyone*) -> **Wajib dipilih agar tamu dapat mengirim doa tanpa login**.
+8. Klik **Terapkan** (*Deploy*) dan berikan izin (*Authorize*).
+9. Salin **URL Aplikasi Web** yang berakhiran `/exec`.
+10. Tempelkan URL tersebut ke:
+    - Langsung di website melalui tombol ikon gerigi ⚙️ di samping judul *Ucapan & Doa Sahabat*, **ATAU**
+    - Di file [js/app.js](js/app.js) pada variabel `GOOGLE_SCRIPT_URL = 'URL_ANDA_DISINI';`.
+
 

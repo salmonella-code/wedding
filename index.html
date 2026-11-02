@@ -740,8 +740,8 @@
                         <i class="fas fa-credit-card text-sasak-gold text-lg"></i>
                     </div>
                     <p class="text-xs text-sasak-charcoal/60">Nomor Rekening</p>
-                    <p class="font-mono text-lg font-bold text-sasak-charcoal my-1 select-all" id="rek-bca">4416 0102
-                        5741 537
+                    <p class="font-mono text-lg font-bold text-sasak-charcoal my-1 select-all" id="rek-bca">
+                        441601025741537
                     </p>
                     <p class="text-xs font-medium text-sasak-charcoal/80 mb-4">a.n. M Salman F</p>
                     <button onclick="copyToClipboard('441601025741537', this)"
@@ -847,15 +847,23 @@
                         </button>
                     </form>
 
-                    <!-- Feed Ucapan Tamu -->
+                    <!-- Feed Ucapan Tamu (Terhubung ke Google Spreadsheet) -->
                     <div class="mt-10 pt-8 border-t border-sasak-sand">
-                        <h4
-                            class="font-serif font-bold text-lg text-sasak-charcoal mb-4 flex items-center justify-between">
-                            <span>Ucapan &amp; Doa Sahabat</span>
-                            <span id="wishes-count"
-                                class="text-xs bg-sasak-sand px-2.5 py-1 rounded-full text-sasak-terracotta font-sans font-semibold">3
-                                Ucapan</span>
-                        </h4>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <h4 class="font-serif font-bold text-lg text-sasak-charcoal flex items-center space-x-2">
+                                <span>Ucapan &amp; Doa Sahabat</span>
+                                <span id="wishes-count"
+                                    class="text-xs bg-sasak-sand px-2.5 py-1 rounded-full text-sasak-terracotta font-sans font-semibold">Memuat...</span>
+                            </h4>
+                            <div class="flex items-center space-x-2">
+                                <button id="refresh-wishes-btn" type="button"
+                                    class="text-[11px] px-2.5 py-1 rounded-lg bg-sasak-sand text-sasak-terracotta hover:bg-sasak-gold hover:text-white transition-colors flex items-center space-x-1"
+                                    title="Muat ulang dari Google Spreadsheet">
+                                    <i class="fas fa-rotate"></i>
+                                    <span>Sinkron</span>
+                                </button>
+                            </div>
+                        </div>
 
                         <div id="wishes-list" class="space-y-3 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
                             <!-- Injected dynamically via script.js -->
