@@ -186,10 +186,10 @@ function launchCelebrationConfetti() {
 }
 
 /**
- * Countdown Timer to the Wedding Day (18 Oktober 2026 08:00 WITA / UTC+8)
+ * Countdown Timer to the Wedding Day (10 Desember 2026 08:00 WITA / UTC+8)
  */
 function initCountdown() {
-    const targetDate = new Date('2026-10-18T08:00:00+08:00').getTime();
+    const targetDate = new Date('2026-12-10T08:00:00+08:00').getTime();
 
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');

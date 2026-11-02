@@ -117,7 +117,7 @@ Semua konten dapat diedit dengan mudah:
 3. **Nomor Rekening**: Cari bagian id `gift` di [index.html](index.html).
 4. **Target Tanggal Countdown**: Buka [js/app.js](js/app.js), cari baris:
    ```javascript
-   const targetDate = new Date('2026-10-18T08:00:00+08:00').getTime();
+   const targetDate = new Date('2026-12-10T08:00:00+08:00').getTime();
    ```
 5. **Musik Latar**: Ganti link `src` audio di tag `<audio id="wedding-audio">` pada [index.html](index.html) dengan URL file mp3 pilihan Anda.
 
